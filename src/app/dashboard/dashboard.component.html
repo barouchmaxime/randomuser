@@ -1,0 +1,15 @@
+<div class="container-fluid display-table">
+  <div class="row display-table-row dashboard-panel">
+    <div class="col-md-3 col-sm-3 col-3 display-table-cell navigation-panel">
+      <app-navigation [menus]="users$ | async" ></app-navigation>
+    </div>
+    <div class="col-md-9 col-sm-9 col-9 display-table-cell main-panel">
+      <div class="main-panel-container">
+        <div class="main-panel-inner-container">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

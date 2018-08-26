@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~font-awesome/css/font-awesome.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.app-body {
+  overflow: hidden;
+}
+body {
+  overflow: hidden;
+}
+/*body {
+  background-color: #0e1a35;
+  position: relative;
+  display: block;
+}
+::selection{
+  color:  white;
+  background-color: #83ba43;
+}*/

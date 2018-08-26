@@ -1,0 +1,12 @@
+<div id="tool-bar-container">
+  <div class="tool-bar">
+    <ul class="values-list horizontal-center">
+      <li role="presentation" *ngFor="let icon of icons"
+          (mouseenter)="onActivate(icon)">
+      <a class="tool-bar-icon">
+        <i class="{{icon.iconClass}}" aria-hidden="true" [class.active]="icon.isActive"></i>
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>

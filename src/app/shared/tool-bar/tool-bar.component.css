@@ -1,0 +1,29 @@
+:host{
+  padding:0 60px;
+}
+.values-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  float: left;
+}
+.values-list li {
+  display:block;
+  width:40px;
+  height:40px;
+  float:left;
+  margin: 20px;
+  cursor: pointer;
+}
+.tool-bar-icon i{
+  display: inline-block;
+  /*border: 1px solid red;*/
+  font-size: 26px;
+  color: #e1e1e1;
+  width:40px;
+  height:40px;
+}
+li i.active {
+  color: #70b300;
+}

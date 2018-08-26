@@ -1,0 +1,10 @@
+<nav id="navigation">
+  <div class="menu">
+    <ul>
+      <li role="presentation" *ngFor="let menu of menus" (click)="onRouteSelection(menu)"
+          [class.active]="isSelected(menu.route)">
+        <a><span class="hidden-xs hidden-sm">{{menu.displayName}}</span><span>{{menu.vote}}</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>

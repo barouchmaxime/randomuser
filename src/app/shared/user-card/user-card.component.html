@@ -1,0 +1,13 @@
+<div class="card-container" *ngIf="user">
+  <div class="card-detail" >
+    <div class="user-photo horizontal-center">
+      <img *ngIf="this.user?.picture?.large" [src]="this.user?.picture?.large"/>
+    </div>
+    <p id="user-title">{{userFieldLabel}}</p>
+    <p id="user-value">{{user[userFieldValue]}}</p>
+    <app-tool-bar [icons]="icons" (onIconHovered)="changeUserField($event)"></app-tool-bar>
+    <div class="action-bar">
+      <button class="skewedX" mat-raised-button color="primary" (click)="vote()">Vote</button>
+    </div>
+  </div>
+</div>

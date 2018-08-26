@@ -1,0 +1,76 @@
+.card-container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 20px 0 0 0;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(0,0,0, .5);
+  overflow: hidden;
+  text-align: center;
+}
+.card-container:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  top:0;
+  background: #f9f9f9;
+  border-bottom:  1px solid rgba(0, 0, 0, .15);
+  z-index: 1;
+}
+.card-detail {
+  position: relative;
+  display:  flex;
+  flex-direction: column;
+  background: none;
+  height: 100%;
+}
+.card-container .user-photo{
+  position: relative;
+  background: #fff;
+  padding:  5px;
+  width:  160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0,0,0, .25);
+  z-index: 2;
+}
+.card-container .user-photo img {
+  width: 150px;
+  border-radius: 50%;
+
+}
+img {
+  border: 0;
+}
+.card-container #user-title {
+  color:#999;
+  font-size: 18px;
+  margin:0;
+}
+.card-container #user-value {
+  color:#2c2e31;
+  font-size: 38px;
+  margin: 5px;
+}
+.horizontal-center {
+  position:relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.action-bar {
+  padding: 20px;
+  border-top: 2px solid black;
+}
+.action-bar button {
+  width: 130px;
+  font-size: 18px;
+}
+.skewedX {
+  -ms-transform: skewX(20deg); /* IE 9 */
+  -webkit-transform: skewX(20deg); /* Safari */
+  transform: skewX(-20deg); /* Standard syntax */
+}
