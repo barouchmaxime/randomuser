@@ -10,7 +10,6 @@ export class ToolBarComponent implements OnInit {
   @Output() onIconHovered = new EventEmitter();
   constructor() { }
   ngOnInit() {
-    /*this.onIconHovered.emit(this.icons[0]);*/
     this.onActivate(this.icons[0]);
   }
   onActivate(icon) {

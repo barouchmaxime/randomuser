@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   @Input() menus;
-  selectedRoute;
+  private selectedRoute;
   constructor(private route: ActivatedRoute,
               private router: Router) {}
   ngOnInit() {

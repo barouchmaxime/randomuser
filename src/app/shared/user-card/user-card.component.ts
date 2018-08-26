@@ -11,7 +11,7 @@ import {AppService} from "../../app.service";
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  public selectedId ;
+  private selectedId ;
   public user;
   private users;
   public icons;
@@ -21,6 +21,7 @@ export class UserCardComponent implements OnInit {
     store.pipe(select('users')).subscribe(
       users => {
         this.users = users;
+        this.user = this.getSelectedUser();
       }
     );
     this.icons = service.getUserIcons();
@@ -34,7 +35,6 @@ export class UserCardComponent implements OnInit {
     );
   }
   changeUserField(icon) {
-    console.log(icon);
     this.userFieldLabel = icon.userFieldLabel;
     this.userFieldValue = icon.userFieldValue;
   }
@@ -42,7 +42,6 @@ export class UserCardComponent implements OnInit {
     return this.users[this.selectedId];
   }
   vote() {
-    console.log("voting");
     this.store.dispatch({ type: INCREMENT_VOTE, payload: {id: this.selectedId} });
   }
 }

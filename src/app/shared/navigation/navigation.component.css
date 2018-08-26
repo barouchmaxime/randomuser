@@ -37,4 +37,15 @@ li,ul{
   padding-left: 21px;
   color: #ffffff;
 }
+.menu-item {
+  display: flex;
+  width: 100%;
+}
+.menu-name {
+  flex: 1 1 auto;
+}
+.menu-vote {
+  flex: 0 0 20px;
+}
+
 
