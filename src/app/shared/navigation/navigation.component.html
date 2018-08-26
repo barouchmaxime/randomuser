@@ -2,7 +2,7 @@
   <div class="menu">
     <ul>
       <li role="presentation" *ngFor="let menu of menus" (click)="onRouteSelection(menu)"
-          [class.active]="isSelected(menu.route)">
+          [class.active]="isSelected(menu.id)">
         <a><div class="menu-item"><div class="menu-name">{{menu.displayName}}</div><div class="menu-vote">{{menu.vote}}</div></div></a>
       </li>
     </ul>

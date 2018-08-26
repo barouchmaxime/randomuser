@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {select, Store} from "@ngrx/store";
 import {AppState} from "../../app.types";
-import {INCREMENT_VOTE} from "../../app.reducers";
+import {INCREMENT_VOTE, LOADED, SELECTION_CHANGED} from "../../app.reducers";
 import {AppService} from "../../app.service";
 
 @Component({
@@ -13,7 +13,7 @@ import {AppService} from "../../app.service";
 export class UserCardComponent implements OnInit {
   private selectedId ;
   public user;
-  private users;
+  private users=[];
   public icons;
   public userFieldLabel;
   public userFieldValue;
@@ -21,7 +21,17 @@ export class UserCardComponent implements OnInit {
     store.pipe(select('users')).subscribe(
       users => {
         this.users = users;
-        this.user = this.getSelectedUser();
+        if(this.selectedId >= 0) {
+          this.user = this.getSelectedUser(this.selectedId);
+        }
+      }
+    );
+    store.pipe(select('selectedId')).subscribe(
+      selectedId => {
+        this.selectedId = selectedId;
+        if(this.selectedId >= 0 && this.users.length >= this.selectedId) {
+          this.user = this.getSelectedUser(this.selectedId);
+        }
       }
     );
     this.icons = service.getUserIcons();
@@ -29,8 +39,8 @@ export class UserCardComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(
       (params: ParamMap) => {
-        this.selectedId = +params.get('id');
-        this.user = this.getSelectedUser();
+        const selectedId = +params.get('id');
+        this.store.dispatch({ type: SELECTION_CHANGED, payload: selectedId })
       }
     );
   }
@@ -38,8 +48,8 @@ export class UserCardComponent implements OnInit {
     this.userFieldLabel = icon.userFieldLabel;
     this.userFieldValue = icon.userFieldValue;
   }
-  getSelectedUser() {
-    return this.users[this.selectedId];
+  getSelectedUser(id) {
+    return this.users[id];
   }
   vote() {
     this.store.dispatch({ type: INCREMENT_VOTE, payload: {id: this.selectedId} });

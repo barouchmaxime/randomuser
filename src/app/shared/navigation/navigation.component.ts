@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {select, Store} from "@ngrx/store";
+import {AppState} from "../../app.types";
 
 @Component({
   selector: 'app-navigation',
@@ -8,17 +10,22 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   @Input() menus;
-  private selectedRoute;
-  constructor(private route: ActivatedRoute,
-              private router: Router) {}
-  ngOnInit() {
-    this.selectedRoute = this.menus && this.menus.length > 0? this.menus[0].route: null;
+  private selectedId;
+  constructor(private store: Store<AppState>,
+              private route: ActivatedRoute,
+              private router: Router) {
+    store.pipe(select('selectedId')).subscribe(
+      selectedId => {
+        this.selectedId = selectedId;
+      }
+    );
   }
-  isSelected(routeUrl) {
-    return this.selectedRoute === routeUrl;
+  ngOnInit() {
+  }
+  isSelected(id) {
+    return this.selectedId === id;
   }
   onRouteSelection(menu) {
-    this.selectedRoute = menu.route;
     let route = menu.route.substring(0, menu.route.lastIndexOf('/'));
     this.router.navigate([route, menu.id], { relativeTo: this.route });
   }
